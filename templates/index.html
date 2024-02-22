@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Fitness Prediction</title>
+</head>
+<body>
+    <h1>Mental Fitness Prediction</h1>
+    <form action="/predict" method="post">
+    
+        <label for="Schizophrenia">Schizophrenia:</label>
+        <input type="text" id="Schizophrenia" name="Schizophrenia"><br>
+
+        <label for="Bipolar_disorder">Bipolar Disorder:</label>
+        <input type="text" id="Bipolar_disorder" name="Bipolar_disorder"><br>
+
+        <label for="Eating_disorder">Eating Disorder:</label>
+        <input type="text" id="Eating_disorder" name="Eating_disorder"><br>
+
+        <label for="Anxiety">Anxiety:</label>
+        <input type="text" id="Anxiety" name="Anxiety"><br>
+
+        <label for="drug_usage">Drug Usage:</label>
+        <input type="text" id="drug_usage" name="drug_usage"><br>
+
+        <label for="depression">Depression:</label>
+        <input type="text" id="depression" name="depression"><br>
+
+        <label for="alcohol">Alcohol:</label>
+        <input type="text" id="alcohol" name="alcohol"><br>
+
+        <input type="submit" value="Predict">
+    </form>
+
+    {% if prediction %}
+        <h2>Prediction Result:</h2>
+        <p>Mental Fitness Prediction: {{ prediction }}</p>
+    {% endif %}
+</body>
+</html>
