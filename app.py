@@ -1,5 +1,5 @@
 import pickle
-from flask import Flask, request, jsonify, redirect
+from flask import Flask, request, jsonify
 import numpy as np
 
 # Load the trained Linear Regression model
@@ -11,22 +11,20 @@ app = Flask(__name__)
 @app.route('/predict', methods=['POST'])
 def predict():
     # Extracting data from the form
-    float_features = [float(x) for x in request.form.values()]
+    data = request.get_json()
+
+    # Extracting features from the data
+    float_features = [float(data[key]) for key in data]
 
     # Make predictions using the loaded model
     features1 = [np.array(float_features)]
     prediction = model.predict(features1)
-    python_list = prediction.tolist()
-    prediction1 = f'The Mental Fitness is {python_list[0]:.2f}'
+    result = f'The Mental Fitness is {prediction[0]:.2f}'
 
-    return jsonify({'message': prediction1}), 200
-
-@app.route("/")
-def home():
-    return redirect("/streamlit")
+    return jsonify({'message': result}), 200
 
 if __name__ == '__main__':
-    app.run(debug=False, port=5000, host='0.0.0.0')
+    app.run(debug=True, host='0.0.0.0', port=5000)
 
 
 
