@@ -3,7 +3,7 @@ import streamlit as st
 import requests
 
 # Get the URL of the Flask app from environment variables
-FLASK_URL = os.environ.get("FLASK_URL")
+FLASK_URL = os.environ.get("http://localhost:5000")
 
 # Title
 st.title("Mental Fitness Prediction")
