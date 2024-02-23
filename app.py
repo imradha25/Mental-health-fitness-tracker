@@ -1,15 +1,13 @@
 import pickle
 from flask import Flask, request, jsonify, redirect
-import pandas as pd
 import numpy as np
 import streamlit as st
-import requests
 
 # Load the trained Linear Regression model
 model = pickle.load(open("linearr_rregression_model.pkl", "rb"))
 
-app = Flask(__name__, static_folder='static', static_url_path='/static')
-
+# Create a Flask app
+app = Flask(__name__)
 
 @app.route('/predict', methods=['POST'])
 def predict():
@@ -23,16 +21,6 @@ def predict():
     prediction1 = f'The Mental Fitness is {python_list[0]:.2f}'
 
     return jsonify({'message': prediction1}), 200
-
-
-@app.route("/streamlit")
-def streamlit():
-    return redirect("http://localhost:8501/")
-
-
-@app.route("/")
-def home():
-    return redirect("/streamlit")
 
 
 # Title
@@ -61,7 +49,7 @@ if st.button("Predict", key="predict-button"):
     }
 
     # Send POST request to Flask API
-    response = requests.post("http://127.0.0.1:5000/predict", data=data)
+    response = predict()
 
     # Display prediction result
     if response.status_code == 200:
@@ -73,7 +61,7 @@ if st.button("Predict", key="predict-button"):
 st.markdown('</div>', unsafe_allow_html=True)
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    app.run(debug=False, port=5000, host='0.0.0.0')
 
 
 
