@@ -1,5 +1,9 @@
+import os
 import streamlit as st
 import requests
+
+# Get the URL of the Flask app from environment variables
+FLASK_URL = os.environ.get("FLASK_URL")
 
 # Title
 st.title("Mental Fitness Prediction")
@@ -27,7 +31,7 @@ if st.button("Predict", key="predict-button"):
     }
 
     # Send POST request to Flask API
-    response = requests.post("http://localhost:5000/predict", data=data)
+    response = requests.post(FLASK_URL + "/predict", data=data)
 
     # Display prediction result
     if response.status_code == 200:
@@ -37,7 +41,6 @@ if st.button("Predict", key="predict-button"):
         st.error(f"Error: {response.text}")
 
 st.markdown('</div>', unsafe_allow_html=True)
-
 
 
 
