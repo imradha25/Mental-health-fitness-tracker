@@ -10,9 +10,9 @@ st.title("Mental Fitness Prediction")
 st.markdown('<div class="container">', unsafe_allow_html=True)
 
 # Input fields
-schizophrenia = st.text_input("How much do you feel overwhelmed by your work?  (out of 100)")
-bipolar_disorder = st.text_input("How much you feel depressed or sad about your work?")
-eating_disorder = st.text_input("Eating Disorder")
+schizophrenia = st.text_input("How much do you feel overwhelmed by your work?                                (out of 100)")
+bipolar_disorder = st.text_input("How much do you feel depressed or sad about your work?                (out of 100) ")
+eating_disorder = st.text_input("How much do you feel that your team or Manager does not support your work?        (out of 100)  ")
 anxiety = st.text_input("Anxiety")
 drug_usage = st.text_input("Drug Usage")
 depression = st.text_input("Depression")
