@@ -10,7 +10,7 @@ st.title("Mental Fitness Prediction")
 st.markdown('<div class="container">', unsafe_allow_html=True)
 
 # Input fields
-schizophrenia = st.text_input("Schizophrenia")
+schizophrenia = st.text_input("Schizophreniaa")
 bipolar_disorder = st.text_input("Bipolar Disorder")
 eating_disorder = st.text_input("Eating Disorder")
 anxiety = st.text_input("Anxiety")
